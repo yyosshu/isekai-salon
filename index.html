@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>異世界転生サロン - 世界初の転生体験プログラム</title>
+    <title>異世界転生サロン - 世界初の転生体験プログラム [架空のデモサイト]</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
@@ -20,6 +20,7 @@
             color: #1a202c;
             background: #0a0a0f;
             overflow-x: hidden;
+            padding-top: 45px;
         }
 
         .particles {
@@ -208,6 +209,30 @@
             100% { filter: drop-shadow(0 0 40px rgba(255, 0, 255, 0.6)); }
         }
 
+        .demo-notice {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, rgba(255, 0, 255, 0.9) 0%, rgba(0, 212, 255, 0.9) 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .demo-notice a {
+            color: #ffffff;
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+
         .hero .subtitle {
             font-size: 1.5rem;
             margin-bottom: 50px;
@@ -389,6 +414,11 @@
     </style>
 </head>
 <body>
+    <!-- デモサイト通知 -->
+    <div class="demo-notice">
+        🎭 これは<strong>架空のサービス</strong>を紹介するデモンストレーションサイトです - 実際のサービスではありません
+    </div>
+
     <!-- パーティクル背景 -->
     <div class="particles" id="particles"></div>
 
@@ -487,30 +517,30 @@
                 <p style="font-size: 1.1rem;">世界初の技術、専属チームによる完全カスタマイズ、そして人生そのものの価値。<br>
                 これは単なる体験ではなく、あなたの存在そのものへの投資です。</p>
             </div>
-            <a href="mailto:info@isekai-salon.com" class="btn-primary">今すぐ転生を予約する</a>
+            <button class="btn-primary" onclick="showDemoAlert()">今すぐ転生を予約する</button>
         </div>
     </section>
 
     <!-- 社会的証明セクション -->
     <section class="section" style="background: #f7fafc;">
         <div class="container">
-            <h2 class="text-navy">先行体験者の声</h2>
+            <h2 class="text-navy">先行体験者の声 <span style="font-size: 1rem; color: #666; font-weight: normal;">（架空の体験談）</span></h2>
             <div style="text-align: center; margin-bottom: 50px;">
                 <div style="font-size: 3rem; font-weight: 900; color: #d69e2e;">98%</div>
-                <p style="font-size: 1.2rem;">先行体験者50名の満足度</p>
+                <p style="font-size: 1.2rem;">先行体験者50名の満足度 <span style="color: #666;">（設定値）</span></p>
             </div>
             <div class="grid grid-2">
                 <div class="testimonial fade-in">
                     <p style="font-size: 1.1rem; margin-bottom: 20px;">「人生が完全に変わりました。現実世界では絶対に体験できない冒険と成長を得ることができ、5,000万円という投資は安すぎるくらいです。」</p>
-                    <div style="font-weight: 700; color: #1a365d;">- T.K様（30代 会社役員）</div>
+                    <div style="font-weight: 700; color: #1a365d;">- 田中様（30代 会社役員）<span style="font-weight: normal; color: #888; font-size: 0.9rem;">※架空の人物</span></div>
                 </div>
                 <div class="testimonial fade-in">
                     <p style="font-size: 1.1rem; margin-bottom: 20px;">「最初は高額で迷いましたが、参加して正解でした。異世界での経験が現実世界でのビジネスにも活かされ、既に投資額の10倍のリターンを得ています。」</p>
-                    <div style="font-weight: 700; color: #1a365d;">- M.S様（40代 起業家）</div>
+                    <div style="font-weight: 700; color: #1a365d;">- 佐藤様（40代 起業家）<span style="font-weight: normal; color: #888; font-size: 0.9rem;">※架空の人物</span></div>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 50px;">
-                <a href="#price" class="btn-primary">あなたも転生体験を始める</a>
+                <button class="btn-primary" onclick="showDemoAlert()">あなたも転生体験を始める</button>
             </div>
         </div>
     </section>
@@ -557,11 +587,21 @@
             </div>
             <div style="margin: 50px 0;">
                 <p style="font-size: 1.3rem; margin-bottom: 30px;">人生を変える決断をする時が来ました</p>
-                <a href="mailto:info@isekai-salon.com?subject=異世界転生サロン参加希望&body=お名前：%0D%0A年齢：%0D%0A職業：%0D%0A転生への想い：" class="btn-primary" style="font-size: 1.2rem; padding: 25px 50px;">今すぐ転生を予約する</a>
-                <p style="font-size: 0.9rem; margin-top: 20px; opacity: 0.7;">※お申込み後、専属コンサルタントより24時間以内にご連絡いたします</p>
+                <button class="btn-primary" onclick="showDemoAlert()" style="font-size: 1.2rem; padding: 25px 50px;">今すぐ転生を予約する</button>
+                <p style="font-size: 0.9rem; margin-top: 20px; opacity: 0.7;">※これは架空のサービスのデモサイトです</p>
             </div>
         </div>
     </section>
+
+    <!-- フッター -->
+    <footer style="background: #0a0a0f; padding: 30px 0; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+        <div class="container">
+            <p style="color: #888; font-size: 0.9rem;">
+                🎭 これは架空のサービス「異世界転生サロン」のデモンストレーションサイトです<br>
+                実際のサービスは存在しません - ウェブデザインの技術デモンストレーション目的で作成されています
+            </p>
+        </div>
+    </footer>
 
     <script>
         // スムーススクロール
@@ -638,6 +678,11 @@
             if (countdownElement) {
                 countdownElement.textContent = `残り ${days.toLocaleString()} 日`;
             }
+        }
+
+        // デモアラート表示
+        function showDemoAlert() {
+            alert('🎭 これは架空のサービスのデモサイトです。\n\n実際のサービスは存在しません。\nランディングページのデザイン・機能デモンストレーション用サイトです。');
         }
 
         // 初回実行と定期更新
