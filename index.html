@@ -18,6 +18,79 @@
             font-family: 'Noto Sans JP', sans-serif;
             line-height: 1.6;
             color: #1a202c;
+            background: #0a0a0f;
+            overflow-x: hidden;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: linear-gradient(45deg, #00d4ff, #ff00ff);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .glow {
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3), 0 0 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .neon-border {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .neon-border::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, #00d4ff, #ff00ff, #00ff88, #00d4ff);
+            animation: rotate 4s linear infinite;
+            z-index: -1;
+        }
+
+        .neon-border::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            background: inherit;
+            border-radius: inherit;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
         }
 
         .font-playfair {
@@ -55,26 +128,36 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #d69e2e 0%, #f6e05e 100%);
-            color: #1a365d;
-            padding: 18px 40px;
+            background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 50%, #00ff88 100%);
+            color: #ffffff;
+            padding: 20px 50px;
             border: none;
             border-radius: 50px;
             font-size: 18px;
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             text-decoration: none;
             display: inline-block;
+            position: relative;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4), 0 0 60px rgba(255, 0, 255, 0.2);
+            animation: pulse 2s ease-in-out infinite alternate;
         }
 
         .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(214, 158, 46, 0.3);
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 0 40px rgba(0, 212, 255, 0.6), 0 0 80px rgba(255, 0, 255, 0.4);
+            animation: none;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 30px rgba(0, 212, 255, 0.4), 0 0 60px rgba(255, 0, 255, 0.2); }
+            100% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.6), 0 0 80px rgba(255, 0, 255, 0.4); }
         }
 
         .hero {
-            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0f 70%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -89,8 +172,16 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('https://placehold.it/1920x1080/1a365d/ffffff?text=異世界への扉') center/cover;
-            opacity: 0.1;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(0, 255, 136, 0.1) 0%, transparent 50%);
+            animation: mystical 10s ease-in-out infinite;
+        }
+
+        @keyframes mystical {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
         }
 
         .hero-content {
@@ -100,10 +191,21 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 5rem;
             font-weight: 900;
             margin-bottom: 30px;
             line-height: 1.2;
+            background: linear-gradient(135deg, #00d4ff 0%, #ff00ff 50%, #00ff88 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4)); }
+            100% { filter: drop-shadow(0 0 40px rgba(255, 0, 255, 0.6)); }
         }
 
         .hero .subtitle {
@@ -113,28 +215,54 @@
         }
 
         .benefit-card {
-            background: white;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(20, 20, 40, 0.9) 100%);
             padding: 50px 30px;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.1);
             text-align: center;
-            transition: transform 0.3s ease;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+            color: #ffffff;
         }
 
         .benefit-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px) scale(1.02);
+            border-color: rgba(255, 0, 255, 0.5);
+            box-shadow: 0 30px 80px rgba(255, 0, 255, 0.2);
         }
 
         .benefit-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #d69e2e, #f6e05e);
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #00d4ff, #ff00ff);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 30px;
-            font-size: 2rem;
+            font-size: 2.5rem;
+            position: relative;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        .benefit-icon::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            background: conic-gradient(from 0deg, #00d4ff, #ff00ff, #00ff88, #00d4ff);
+            border-radius: 50%;
+            z-index: -1;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .comparison-table {
@@ -261,38 +389,41 @@
     </style>
 </head>
 <body>
+    <!-- パーティクル背景 -->
+    <div class="particles" id="particles"></div>
+
     <!-- ヒーローセクション -->
     <section class="hero">
         <div class="container">
             <div class="hero-content text-white">
                 <div class="mb-6">
-                    <span class="text-gold font-weight-700" style="font-size: 1.2rem;">世界初 × 日本最大級 × 冒険者未経験歓迎</span>
+                    <span style="font-size: 1.2rem; color: #00d4ff; text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);">世界初 × 日本最大級 × 冒険者未経験歓迎</span>
                 </div>
                 <h1 class="font-playfair">異世界転生サロン</h1>
-                <p class="subtitle">2050年12月末まで、あなたの人生を異世界級にアップグレード</p>
-                <a href="#price" class="btn-primary">今すぐ転生を予約する</a>
+                <p class="subtitle" style="color: #ffffff; text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);">2050年12月末まで、あなたの人生を異世界級にアップグレード</p>
+                <a href="#price" class="btn-primary neon-border">今すぐ転生を予約する</a>
             </div>
         </div>
     </section>
 
     <!-- ベネフィットセクション -->
-    <section class="section" style="background: #f7fafc;">
+    <section class="section" style="background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);">
         <div class="container">
-            <h2 class="text-navy">選ばれる3つの理由</h2>
+            <h2 style="color: #ffffff; text-shadow: 0 0 20px rgba(0, 212, 255, 0.5);">選ばれる3つの理由</h2>
             <div class="grid grid-3">
                 <div class="benefit-card fade-in">
                     <div class="benefit-icon">🚀</div>
-                    <h3 class="text-navy">未経験でも参加OK</h3>
+                    <h3 style="color: #00d4ff;">未経験でも参加OK</h3>
                     <p>冒険経験ゼロでも安心。専属コンサルタントがあなたの転生をフルサポート。過去の人生は一切問いません。</p>
                 </div>
                 <div class="benefit-card fade-in">
                     <div class="benefit-icon">⚡</div>
-                    <h3 class="text-navy">完全オーダーメイド設計</h3>
+                    <h3 style="color: #ff00ff;">完全オーダーメイド設計</h3>
                     <p>あなただけの転生シナリオを設計。理想の異世界での人生を、最先端テクノロジーで完全再現します。</p>
                 </div>
                 <div class="benefit-card fade-in">
                     <div class="benefit-icon">👑</div>
-                    <h3 class="text-navy">競合ゼロの一期一会体験</h3>
+                    <h3 style="color: #00ff88;">競合ゼロの一期一会体験</h3>
                     <p>世界で唯一のプログラム。他では絶対に体験できない、あなただけの特別な転生ストーリーを提供します。</p>
                 </div>
             </div>
@@ -481,6 +612,21 @@
             }
         }
 
+        // パーティクル生成
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
         // カウントダウン更新
         function updateCountdown() {
             const targetDate = new Date('2050-12-31').getTime();
@@ -495,6 +641,7 @@
         }
 
         // 初回実行と定期更新
+        createParticles();
         updateCountdown();
         setInterval(updateCountdown, 86400000); // 24時間ごと
     </script>
